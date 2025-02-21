@@ -1,0 +1,610 @@
+<!DOCTYPE html>  <html lang="en">    <head>    
+    <meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crown</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <!-- Boxicons -->    
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">    
+        <!-- Instagram Fonts -->    
+        <footer class="footer">
+    &copy; 2025 Crown technology like Website. All rights reserved.
+</footer>
+<style>    
+    @font-face { 
+        font-family: 'Billabong';    
+        src: url('fonts/Billabong.ttf') format('truetype'); 
+        
+    }  
+    
+    @font-face {    
+    font-family: 'Proxima Nova';    
+    src: url('fonts/ProximaNova.otf') format('opentype'); 
+        
+    }
+
+    /* General Styles */
+body {
+font-family: 'Proxima Nova', sans-serif;
+margin: 0;
+padding: 0;
+background: #f8f8f8;
+transition: back;
+}
+        
+    .logo {
+      font-size: 15px;
+      font-weight: bold;
+    }
+    .actions i {
+      font-size: 28px;
+      cursor: pointer;
+      margin-left: 0px;
+      transition: color 0.3s ease;
+}
+
+/* Instagram-Style Name */
+.insta-name {
+font-size: 32px;
+font-weight: bold;
+font-family: 'Billabong', cursive;
+}
+.social-icons a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        text-decoration: none;
+        background: white;
+        box-shadow: 0 0px 0px rgba(0, 0, 0, 0.2);
+        border: 2px solid transparent;
+        background-image: linear-gradient(white,white),
+                          linear-gradient(to right, #6a11cb, #2575fc);
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+        transition: none;
+    }
+
+    .social-icons a:hover {
+        transform: scale(1.1);		
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .social-icons {
+         display: flex;
+         justify-content: flex-start;
+         align-items: center;
+         gap: 24px;
+         margin: 100px 0 0 20px;
+    }
+    
+    .social-icons a:nth-child(1) {
+        animation: slide-left 0.4s ease-in-out;
+    }
+    .social-icons a:nth-child(2) {
+        animation: slide-left 0.8s ease-in-out;
+    }
+    .social-icons a:nth-child(3) {
+        animation: slide-left 0.8s ease-in-out;
+    }
+    
+    .social-icons a i {
+        font-size: 32px;
+        background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+/* Dark mode par social icons ke andar background khatam */
+body.dark-mode .social-icons a {
+    background: transparent;
+    border: 2px solid #00f; /* Gradient border maintained */
+    box-shadow: 0 0 8px rgba(0, 0, 255, 0.5); /* Optional glow */
+}
+
+body.dark-mode .social-icons a i {
+    background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+    
+/* Dark Mode */
+
+body.dark-mode {
+background: #121212;
+color: white;
+    
+}
+.header .logo {
+animation: none;
+}
+    /* Hero text colors based on dark mode */
+.hero-text {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.hero-text span.aadam {
+  color: #000000; /* Default black when dark mode is off */
+  transition: color 0.3s ease;
+}
+
+.hero-text span.here {
+  color: white; /* Default white for dark •" */
+  transition: color 0.3s ease;
+}
+    
+body.dark-mode .hero-text span.here {
+  color: #ffffff; /* White in dark mode */
+}
+.dark-red {
+color: #8B0000; /* Full dark red */
+}
+
+.black {
+color: black;
+}
+
+/* Side Menu */
+.side-menu {
+position: fixed;
+top: 0;
+left: -256px;
+width: 250px;
+height: 100%;
+background: white;
+box-shadow: 4px 0px 8px rgba(0, 0, 0, 0.1);
+padding-top: 55px;
+transition: left 0.3s ease-in-out;
+}
+
+.side-menu.menu-open {
+left: 0;
+
+}
+.side-menu ul li.active::after {
+width: 23%; /* Adjust width of the bubble */
+}
+
+.side-menu ul li:hover::after {
+width: 23%;
+}
+
+    /* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 18px;
+    background: #f8f8f8;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0; /* Yeh galat tha, sahi kar diya */
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Hero Section */
+.hero {
+text-align: left;
+padding: 80px 20px;
+margin-top: 30px;
+}
+
+.hero h1 {
+font-size: 36px;
+font-weight: Bold;
+animation: slide-down 0.5s ease-in-out;
+}
+
+.hero p {
+font-size: 18px;
+font-weight: bold;
+animation: slide-up 0.8s ease-in-out;
+}
+
+/* Button Container */
+.btn {
+display: inline-block;
+position: none;
+}
+
+/* Main Button */
+.btn button {
+    position: none; /* 'none' invalid tha, 'relative' use kiya */
+    background: #f8f8f8; /* Inner background */
+    color: #000; /* Text color */
+    padding: 6px 18px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    border: 2px solid transparent; /* Transparent border */
+    border-radius: 100px; /* More circular */
+    animation: slide-up 0.6s ease-in-out;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    z-index: 1000;
+    overflow: hidden;
+    background-clip: padding-box, border-box;
+    background-origin: border-box;
+    background-image: linear-gradient(white, white), 
+                      linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+}
+
+
+/* Hover Effect */
+.btn button:hover {
+    background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59); 
+    color: white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    transform: scale(1.03);
+    transition: all 0.3s ease-in-out;
+}
+    .hero-text {
+  font-size: 32px;
+  font-weight: bold;
+  animation: slide-down 0.8s ease-in-out;
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes moon-slide {
+    from {
+        transform: translateX(150px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes slide-left {  
+    from {  
+        transform: translateX(-190px);  
+        opacity: 0;  
+    }  
+    to {  
+        transform: translateX(0);  
+        opacity: 1;  
+    }  
+}  
+
+@keyframes slide-right {  
+    from {  
+        transform: translateX(50px);  
+        opacity: 1;  
+    }  
+    to {  
+        transform: translateX(0);  
+        opacity: 1;  
+    }  
+}  
+
+@keyframes slide-up {  
+    from {  
+        transform: translateY(80px);  
+        opacity: 0;  
+    }  
+    to {  
+        transform: translateY(0);  
+        opacity: 1;  
+    }
+}
+    </style>
+</head>
+<body>
+<body><!-- Header --><div class="header">    
+    <div class="logo">  ̠̹           Crowntech 3:) </div>    
+    <div class="actions">    
+        <i class='bx bxs-moon mode-toggle'></i>    
+        <i class='bx bx-menu menu-toggle'></i>    
+    </div>  
+
+</div><!-- Side Menu --><div class="side-menu">
+        <nav>
+  <ul>
+        <li><a href="#">Home</a></li>     
+        <li><a href="#">About</a></li>    
+        <li><a href="#">Skills</a></li>    
+        <li><a href="#">Portfolio</a></li>    
+        <li><a href="#">Contact</a></li>    
+        <li><a href="#" class="exit-btn"><i class='bx bx-exit'></i></a></li>    
+    </ul>
+
+</nav>
+</div><!-- Social Icons --><div class="social-icons">    
+    <a href="https://github.com/your-profile"><i class='bx bxl-github'></i></a>    
+    <a href="https://www.instagram.com/iixu3h"><i class='bx bxl-instagram'></i></a>    
+    <a href="https://www.facebook.com/adamkhorr.1"><i class='bx bxl-facebook-circle'></i></a>    
+</div><!-- Hero Section --><div class="hero">    
+    <h1 class="insta-name">    
+        <span class="dark-red">| Aadam </span> here </span> • </h1>    
+        <p>• I'm the best programmer ♨</p>    
+        <p>• Hope you are well? Wanna contact me? Click the links above.</p>    
+        <p style="white-space: pre-line;"> • Dream in code, live in solutions, and leave behind a legacy of     
+            • innovation </p>    
+        <p style="white-space: pre-line;"> • Code karte waqt galtiyan hona zaroori hai, kyunki har bug ek nayi     
+            • seekh ka darwaza kholta hai. Asli programmer woh hai jo problem ko     
+            • solve karte hue thak nahi jata, balki har challenge mein ek naye idea ka     
+            • izafa karta hai </p>    
+     <p>• Keep coding, keep growing! 👾 </p>    
+                               <div class="btn">
+    <button> Contect ♨ </button>
+</div>
+ 
+<script>
+    const darkToggle = document.querySelector(".mode-toggle");
+const body = document.body;
+const menuToggle = document.querySelector(".menu-toggle");
+const sideMenu = document.querySelector(".side-menu");
+const exitBtn = document.querySelector(".exit-btn");
+const navMenu = document.querySelector(".nav-menu");
+const navItems = document.querySelectorAll(".side-menu ul li");
+
+// **Dark Mode Toggle**
+darkToggle.addEventListener("click", () => {
+    body.classList.toggle("dark-mode");
+});
+
+// **Side Menu & Full Navigation Open/Close**
+menuToggle.addEventListener("click", () => {
+    sideMenu.classList.toggle("menu-open");
+    navMenu.classList.toggle("active");
+
+    // Navigation items ka ek-ek karke animation delay set karna
+    navItems.forEach((item, index) => {
+        item.style.opacity = "0";
+        item.style.transform = "translateX(-100px)"; // Pehle left side pe hoga
+        setTimeout(() => {
+            item.style.transition = `opacity 0.5s ease ${index * 0.3}s, transform 0.5s ease ${index * 0.3}s`;
+            item.style.opacity = "1";
+            item.style.transform = "translateX(0)"; // Center par smoothly aayega
+        }, 200);
+    });
+});
+
+// **Close Menu on Exit Button Click**
+exitBtn.addEventListener("click", () => {
+    sideMenu.classList.remove("menu-open");
+    navMenu.classList.remove("active");
+
+    // Jab menu band ho, sabhi navigation items phir se hidden ho jayein
+    navItems.forEach(item => {
+        item.style.opacity = "0";
+        item.style.transform = "translateX(-100px)";
+    });
+});
+
+// **Active Class on Navigation Links**
+document.querySelectorAll('.side-menu ul li a').forEach(item => {
+    item.addEventListener('click', () => {
+        document.querySelectorAll('.side-menu ul li a').forEach(link => link.classList.remove('active'));
+        item.classList.add('active');
+    });
+});
+</script>
+</script></body>
+    
+</html>     
+    <style>    
+    /* General Styles */  
+    body {  
+       font-family: Arial, sans-serif;  
+        margin: 0;  
+        padding: 0;  
+        background: #f8f8f8;  
+        transition: background 0.5s, color 0.5s;  
+    }  
+    /* Header */
+.header {  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;  
+    padding: 16px 0px;  
+    background: #f8f8f8;  
+    box-shadow: black;  
+    position: fixed;  
+    top: 0;  
+    width: 100%;  
+    z-index: 1000;
+      
+}
+                  
+.header .logo {  
+    font-size: 30px;  
+    font-weight: bold;  
+}  
+.header .actions {  
+    display: flex;  
+    align-items: center;  
+}  
+
+.mode-toggle {
+    position: absolute;
+    cursor: pointer;
+    right: 25px;
+    left: auto;
+    transform: translateX(-10px)
+    
+    }
+    
+.menu-toggle {  
+    position: absolute;
+    cursor: pointer;
+    right: -2px;
+    left: auto;
+    transform: translateX(-10px)
+    
+}
+    
+   .mode-toggle {
+font-size: 18px;
+padding: 0px;
+background: #f8f8f8;
+color: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+border-radius: 50%;
+cursor: pointer;
+transition: all 0.3s ease-in-out;
+animation: moon-slide 0.8s ease-in-out;
+       
+}
+
+        
+.side-menu ul {
+list-style: none;
+padding: 0;
+}
+
+.side-menu ul li {  
+    padding: 18px;  
+    text-align: center;  
+}  
+
+.side-menu ul li a {  
+    text-decoration: none;  
+    font-size: 18px;  
+    color: #333;  
+    transition: 0.3s; 
+}  
+side-menu ul li a:hover {
+background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+/* Bubble Line */
+.side-menu ul li::after {
+content: '';
+    
+position: absolute;
+bottom: 0;
+left: 50%;
+width: 0;
+height: 3px;
+background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+border-radius: 100px;
+transition: all 0.3s ease;
+transform: translateX(-50%);
+}
+  /* Default state */
+.side-menu ul li a {
+    color: black;
+    transition: color 0.3s ease;
+}
+
+/* Dark mode state */
+body.dark-mode .side-menu ul li a {
+    color: white;
+}
+
+    body.dark-mode .btn button {
+    background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+    color: white;
+}
+    body.dark-mode .btn::before {
+    background: linear-gradient(to right, #ff512f, #dd2476);
+    }
+
+/* Active state for gradient color */
+.side-menu ul li a.active {
+    background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.side-menu ul li {
+    position: relative;
+    padding: 16px 8px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+    
+.mode-toggle {
+    background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.show-menu {
+    left: 0;
+}
+
+body.dark-mode {
+    background: #000112;
+    color: white;
+}
+
+body.dark-mode .header {
+    background: #000112;
+    color: white;
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
+}
+    
+body.dark-mode .side-menu {
+    background: #000112;
+    color: white;
+}
+    
+    /* Copyright footer*/
+    .footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 12px;
+  box-shadow: all 0.5s ease;
+  font-size: 9px;
+  transition: none;
+  animation: slide-left 0.9s ease;
+}
+
+body.dark-mode footer {
+  background-color: #000112;
+  box-shadow: none;
+  color: white;
+}
+
+body:not(.dark-mode) footer {
+  box-shadow: none;
+  color: black;
+  font-size: 9px;
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Hidden initially */
+    width: 100vw; /* Full width */
+    height: 100vh; /* Full screen height */
+    background: #000112;
+    transition: left 0.1s ease-in-out;
+}
+        /* Smooth synchronized transitions for all elements */
+* {
+    transition: all 0.3s ease !important;
+
+}
+
+.side-menu.menu-open {
+    left: 0; /* Slide fully into view */
+}
+    /* Default light mode */
+.side-menu {
+    background: white;
+}
+    .side-menu {
+    box-shadow: -4px 0px 8px rgba(0, 0, 0, 0.1); /* Left side shadow */
+}
